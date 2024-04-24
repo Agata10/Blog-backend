@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wizard World Blog - <%=title%></title>
+  </head>
+  <body>
+    <h1><a href="/">Wizard World Blog</a></h1>
+    <div class="users-content">
+      <% if(users.length > 0) { %> <% users.forEach(user => { %>
+      <div class="card" id="_<%=user.id%>">
+        <img src="" alt="" />
+        <h4><%=user.name%></h4>
+        <p><%=user.username%></p>
+        <p><%=user.email%></p>
+      </div>
+      <% })%> <%}%>
+    </div>
+    <script>
+      document
+        .querySelector(".users-content")
+        .addEventListener("click", (e) => {
+          if (e.target.className === "card") {
+            const id = e.target.id.slice(1);
+            console.log(id);
+            window.location = `/api/users/${id}/posts/create`;
+          }
+        });
+    </script>
+  </body>
+</html>
