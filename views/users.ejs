@@ -17,6 +17,17 @@
       </div>
       <% })%> <%}%>
     </div>
+    <div>
+      <ul>
+        <% if(userPosts.length > 0) { %> <% userPosts.forEach(post => { %>
+        <div class="post" id="_<%=post.id%>">
+          <h4>Title: <%=post.title%></h4>
+          <p>Content: <%=post.content%></p>
+          <p>Id: <%=post.id%>, userId: <%=post.userId%></p>
+        </div>
+        <% })%> <%}%>
+      </ul>
+    </div>
     <script>
       document
         .querySelector(".users-content")
@@ -24,7 +35,7 @@
           if (e.target.className === "card") {
             const id = e.target.id.slice(1);
             console.log(id);
-            window.location = `/api/users/${id}/posts/create`;
+            window.location = `/api/users/${id}/posts`;
           }
         });
     </script>
