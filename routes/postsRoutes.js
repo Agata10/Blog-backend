@@ -31,6 +31,47 @@ router
     }
   });
 
-router.route(":id").get().patch().delete();
+router
+  .route("/:id")
+  .get((req, res, next) => {
+    const post = posts.find((p) => p.id == req.params.id);
+    if (post) {
+      res.json(post);
+    } else {
+      next();
+    }
+  })
+  .put((req, res, next) => {
+    const post = posts.find((p) => p.id == req.params.id);
+    if (post) {
+      if (req.body.userId && req.body.title && req.body.content) {
+        for (let key in req.body) {
+          post[key] = req.body[key];
+        }
+        res.json(post);
+      } else {
+        return res.json({
+          error: "Properties required: userId, title, content",
+        });
+      }
+      //console.log(key);
+      //   post = req.body;
+    } else {
+      next();
+    }
+  })
+  .delete((req, res, next) => {
+    const post = posts.find((p, i) => {
+      if (p.id == req.params.id) {
+        posts.splice(i, 1);
+        return true;
+      }
+    });
+    if (post) {
+      res.json(post);
+    } else {
+      next();
+    }
+  });
 
 module.exports = router;
