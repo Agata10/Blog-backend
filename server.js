@@ -27,14 +27,13 @@ app.use((req, res, next) => {
 });
 
 //homepage
+//render view with main links for /api routes
 app.get("/", (req, res) => {
-  res.render("home", { title: "Welcome to the world of magic" });
-});
-
-app.get("/example", (req, res, next) => {
-  const err = new Error("Example error");
-  err.status = 400; // Set status code to 400 (Bad Request)
-  next(err);
+  const menuLinks = [
+    { tagName: "Users", href: "/api/users" },
+    { tagName: "All Posts", href: "/api/posts" },
+  ];
+  res.render("home", { title: "Welcome to the world of magic", menuLinks });
 });
 
 //middleware to handling if route not found 404
