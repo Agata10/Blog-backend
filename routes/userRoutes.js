@@ -12,6 +12,7 @@ router.route("/").get((req, res) => {
 //it might have query to sort by id either desc or asc
 router.route("/:id/posts/").get((req, res, next) => {
   const userPosts = posts.filter((p) => p.userId == req.params.id);
+  const userName = users.find((u) => u.id == req.params.id).name;
   if (req.query.sortBy === "id:desc") {
     userPosts.sort((a, b) => {
       return b.id - a.id;
@@ -22,7 +23,7 @@ router.route("/:id/posts/").get((req, res, next) => {
     });
   }
   if (userPosts) {
-    return res.render("users", { title: "posts", users, userPosts });
+    return res.render("users", { title: "posts", users, userPosts, userName });
   } else {
     next();
   }

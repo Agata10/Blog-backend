@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Wizard World Blog - <%=title%></title>
-  </head>
+  <%- include('./partials/head.ejs') %>
   <body>
     <h1><a href="/">Wizard World Blog</a></h1>
     <div class="users-content">
@@ -14,19 +10,21 @@
         <h4><%=user.name%></h4>
         <p><%=user.username%></p>
         <p><%=user.email%></p>
+        <button onclick="createPost(this)">Create Post</button>
       </div>
       <% })%> <%}%>
     </div>
     <div>
-      <ul>
-        <% if(userPosts.length > 0) { %> <% userPosts.forEach(post => { %>
-        <div class="post" id="_<%=post.id%>">
-          <h4>Title: <%=post.title%></h4>
-          <p>Content: <%=post.content%></p>
-          <p>Id: <%=post.id%>, userId: <%=post.userId%></p>
-        </div>
-        <% })%> <%}%>
-      </ul>
+      <% if(locals.userPosts) { %>
+      <h2>Posts created by <%=userName%>:</h2>
+      <% if(userPosts.length > 0) { %> <% userPosts.forEach(post => { %>
+
+      <div class="post" id="_<%=post.id%>">
+        <h4>Title: <%=post.title%></h4>
+        <p>Content: <%=post.content%></p>
+        <p>Id: <%=post.id%>, userId: <%=post.userId%></p>
+      </div>
+      <% })%> <%}%><%}%>
     </div>
     <script>
       document
@@ -38,6 +36,11 @@
             window.location = `/api/users/${id}/posts`;
           }
         });
+
+      function createPost(btn) {
+        const id = btn.parentNode.id.slice(1);
+        window.location.href = `/api/users/${id}/posts/create`;
+      }
     </script>
   </body>
 </html>
