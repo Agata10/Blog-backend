@@ -4,7 +4,12 @@
   <body>
     <form action="/api/posts" method="post">
       <div>
-        <input type="text" name="userId" value="<%=userId%>" />
+        <input
+          type="text"
+          name="userId"
+          value="<%=userId%>"
+          style="display: none"
+        />
         <input type="text" placeholder="Title..." name="title" required />
         <input type="text" placeholder="Content..." name="content" required />
         <button type="submit">Submit</button>

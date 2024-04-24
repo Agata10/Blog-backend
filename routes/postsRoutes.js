@@ -22,7 +22,7 @@ router
 
         posts.push(post);
         res.json(posts[posts.length - 1]);
-        console.log(req.body);
+        // console.log(req.body);
         console.log("Successfully created post");
         return;
       }
@@ -30,5 +30,7 @@ router
       return res.json({ error: "Invalid data" });
     }
   });
+
+router.route(":id").get().patch().delete();
 
 module.exports = router;

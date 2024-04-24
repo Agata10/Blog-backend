@@ -31,7 +31,6 @@ router.route("/:id/posts/").get((req, res, next) => {
 });
 
 router.route("/:id/posts/create").get((req, res, next) => {
-  console.log(req.body);
   res.render("createPost", { userId: req.params.id, title: "create post" });
 });
 

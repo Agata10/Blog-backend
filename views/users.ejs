@@ -7,9 +7,9 @@
       <% if(users.length > 0) { %> <% users.forEach(user => { %>
       <div class="card" id="_<%=user.id%>">
         <img src="" alt="" />
-        <h4><%=user.name%></h4>
-        <p><%=user.username%></p>
-        <p><%=user.email%></p>
+        <h4>Name: <%=user.name%></h4>
+        <p>Username: <%=user.username%></p>
+        <p>Email: <%=user.email%></p>
         <button onclick="createPost(this)">Create Post</button>
       </div>
       <% })%> <%}%>
