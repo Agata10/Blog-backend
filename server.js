@@ -9,6 +9,8 @@ app.set("view engine", "ejs");
 
 //use body-parser to access send body in the request
 app.use(express.json());
+//encoding for data in the form!
+app.use(express.urlencoded({ extended: true }));
 
 //Logging requests middleware
 app.use((req, res, next) => {

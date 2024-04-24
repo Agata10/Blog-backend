@@ -3,6 +3,7 @@ const router = express.Router();
 
 const users = require("../data/users");
 const posts = require("../data/posts");
+const { render } = require("ejs");
 
 router.route("/").get((req, res) => {
   res.render("users", { title: "users", users });
@@ -27,6 +28,11 @@ router.route("/:id/posts/").get((req, res, next) => {
   } else {
     next();
   }
+});
+
+router.route("/:id/posts/create").get((req, res, next) => {
+  console.log(req.body);
+  res.render("createPost", { userId: req.params.id, title: "create post" });
 });
 
 module.exports = router;
