@@ -4,10 +4,18 @@ const router = express.Router();
 const posts = require("../data/posts");
 const users = require("../data/users");
 
+//GET and POST posts
 router
   .route("/")
   .get((req, res) => {
-    res.render("posts", { title: "posts", posts });
+    //for userId query
+    if (req.query.userId) {
+      let userPosts = posts.filter((p) => p.userId == req.query.userId);
+      res.render("posts", { title: "posts", posts: userPosts });
+    } else {
+      res.render("posts", { title: "posts", posts });
+    }
+
     //res.json(posts);
   })
   .post((req, res, next) => {
@@ -32,6 +40,7 @@ router
     }
   });
 
+//GET posts by id, PUT by id, DELETE by id
 router
   .route("/:id")
   .get((req, res, next) => {

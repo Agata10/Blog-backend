@@ -4,6 +4,7 @@ const router = express.Router();
 const users = require("../data/users");
 const posts = require("../data/posts");
 
+//GET users and create-POST user
 router
   .route("/")
   .get((req, res) => {
