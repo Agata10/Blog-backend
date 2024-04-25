@@ -120,6 +120,11 @@ button:hover {
     gap: 35px;
 }
 
+img {
+    width: 100%;
+    height: 320px;
+}
+
 .users-posts h2 {
     width: 90%;
     font-size: 1.6rem;

@@ -7,7 +7,15 @@
     <div class="users-content">
       <% if(users.length > 0) { %> <% users.forEach(user => { %>
       <div class="card" id="_<%=user.id%>">
-        <img src="" alt="" />
+        <%if(user.name.toLowerCase() === 'harry') {%>
+        <img src="/images/harry.webp" alt="harry" />
+        <%} else if(user.name.toLowerCase() === 'hermione') {%>
+        <img src="/images/hermione.jpeg" alt="hermione" />
+        <%} else if(user.name.toLowerCase() === 'ronald') {%>
+        <img src="/images/ron.jpeg" alt="ron" />
+        <%} else {%>
+        <img src="/images/none-img.jpeg" alt="no-img" />
+        <%}%>
         <h4>Name: <%=user.name%></h4>
         <p>Username: <%=user.username%></p>
         <p>Email: <%=user.email%></p>
@@ -32,12 +40,12 @@
       document
         .querySelector(".users-content")
         .addEventListener("click", (e) => {
-          console.log(e.target);
+          e.preventDefault();
           if (
             e.target.className === "card" ||
             e.target.parentNode.className === "card"
           ) {
-            if (e.target.tagName !== "BUTTON") {
+            if (e.target.tagName !== "BUTTON" && e.target.tagName !== "IMG") {
               const id =
                 e.target.id.slice(1) || e.target.parentNode.id.slice(1);
               console.log(id);
