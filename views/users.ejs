@@ -3,6 +3,7 @@
   <%- include('./partials/head.ejs') %>
   <body>
     <h1><a href="/">Wizard World Blog</a></h1>
+    <h3>Users:</h3>
     <div class="users-content">
       <% if(users.length > 0) { %> <% users.forEach(user => { %>
       <div class="card" id="_<%=user.id%>">
@@ -14,7 +15,7 @@
       </div>
       <% })%> <%}%>
     </div>
-    <div>
+    <div class="users-posts">
       <% if(locals.userPosts) { %>
       <h2>Posts created by <%=userName%>:</h2>
       <% if(userPosts.length > 0) { %> <% userPosts.forEach(post => { %>
@@ -30,10 +31,17 @@
       document
         .querySelector(".users-content")
         .addEventListener("click", (e) => {
-          if (e.target.className === "card") {
-            const id = e.target.id.slice(1);
-            console.log(id);
-            window.location = `/api/users/${id}/posts`;
+          console.log(e.target);
+          if (
+            e.target.className === "card" ||
+            e.target.parentNode.className === "card"
+          ) {
+            if (e.target.tagName !== "BUTTON") {
+              const id =
+                e.target.id.slice(1) || e.target.parentNode.id.slice(1);
+              console.log(id);
+              window.location = `/api/users/${id}/posts`;
+            }
           }
         });
 
