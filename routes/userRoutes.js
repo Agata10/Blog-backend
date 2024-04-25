@@ -3,7 +3,6 @@ const router = express.Router();
 
 const users = require("../data/users");
 const posts = require("../data/posts");
-const { render } = require("ejs");
 
 router.route("/").get((req, res) => {
   res.render("users", { title: "users", users });
@@ -30,8 +29,45 @@ router.route("/:id/posts/").get((req, res, next) => {
   }
 });
 
+//render creating post view
 router.route("/:id/posts/create").get((req, res, next) => {
   res.render("createPost", { userId: req.params.id, title: "create post" });
 });
+
+//GET, PATCH, DELETE the user with specific id parameter
+router
+  .route("/:id")
+  .get((req, res, next) => {
+    const user = users.find((u) => u.id == req.params.id);
+    if (user) {
+      res.json(user);
+    } else {
+      next();
+    }
+  })
+  .patch((req, res) => {
+    const user = users.find((p) => p.id == req.params.id);
+    if (user) {
+      for (let key in req.body) {
+        user[key] = req.body[key];
+      }
+      res.json(user);
+    } else {
+      return res.json({ error: "User not found" });
+    }
+  })
+  .delete((req, res) => {
+    const user = users.find((u, i) => {
+      if (u.id == req.params.id) {
+        users.splice(i, 1);
+        return true;
+      }
+    });
+    if (user) {
+      res.json(user);
+    } else {
+      return res.json({ error: "User not found" });
+    }
+  });
 
 module.exports = router;

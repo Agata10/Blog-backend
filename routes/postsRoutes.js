@@ -54,8 +54,6 @@ router
           error: "Properties required: userId, title, content",
         });
       }
-      //console.log(key);
-      //   post = req.body;
     } else {
       next();
     }
@@ -70,7 +68,7 @@ router
     if (post) {
       res.json(post);
     } else {
-      next();
+      return res.json({ error: "Post not found" });
     }
   });
 
