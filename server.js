@@ -7,6 +7,9 @@ const postRoutes = require("./routes/postsRoutes");
 //set up template engine
 app.set("view engine", "ejs");
 
+//add static files from 'public' directory
+app.use(express.static("public"));
+
 //use body-parser to access send body in the request
 app.use(express.json());
 //encoding for data in the form!

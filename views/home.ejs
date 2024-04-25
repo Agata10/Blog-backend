@@ -7,7 +7,6 @@
         <h1><a href="/">Wizard World Blog</a></h1>
         <h3><%=locals.title || "Welcome!" %></h3>
       </div>
-
       <div>
         <ul>
           <%if(locals.menuLinks) {%> <%menuLinks.forEach((link) => {%>
@@ -18,8 +17,5 @@
         </ul>
       </div>
     </header>
-    <main>
-      <div class="content"></div>
-    </main>
   </body>
 </html>
