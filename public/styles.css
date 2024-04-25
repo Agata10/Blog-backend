@@ -64,9 +64,10 @@ a:hover {
 .users-content {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: center;
     padding-top: 40px;
     border-top: 1px solid grey;
+    gap: 40px;
 }
 
 .card {
@@ -123,6 +124,7 @@ button:hover {
 img {
     width: 100%;
     height: 320px;
+    cursor: default;
 }
 
 .users-posts h2 {

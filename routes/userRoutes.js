@@ -4,9 +4,28 @@ const router = express.Router();
 const users = require("../data/users");
 const posts = require("../data/posts");
 
-router.route("/").get((req, res) => {
-  res.render("users", { title: "users", users });
-});
+router
+  .route("/")
+  .get((req, res) => {
+    res.render("users", { title: "users", users });
+  })
+  .post((req, res) => {
+    if (req.body.name && req.body.username && req.body.email) {
+      const foundUser = users.find((u) => u.username == req.body.username);
+      if (foundUser) {
+        res.json({ error: "Username Already Taken" });
+        return;
+      }
+      const user = {
+        id: users[users.length - 1].id + 1,
+        name: req.body.name,
+        username: req.body.username,
+        email: req.body.email,
+      };
+      users.push(user);
+      res.json(users[users.length - 1]);
+    } else res.json({ error: "Invalid Data, need: name, username, email" });
+  });
 
 //Retrieves all posts by a user with the specified id
 //it might have query to sort by id either desc or asc
