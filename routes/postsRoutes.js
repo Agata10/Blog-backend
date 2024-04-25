@@ -7,11 +7,16 @@ const users = require("../data/users");
 //GET and POST posts
 router
   .route("/")
-  .get((req, res) => {
+  .get((req, res, next) => {
     //for userId query
     if (req.query.userId) {
       let userPosts = posts.filter((p) => p.userId == req.query.userId);
-      res.render("posts", { title: "posts", posts: userPosts });
+      if (userPosts.length > 0) {
+        res.render("posts", { title: "posts", posts: userPosts });
+      } else {
+        next();
+        return;
+      }
     } else {
       res.render("posts", { title: "posts", posts });
     }
