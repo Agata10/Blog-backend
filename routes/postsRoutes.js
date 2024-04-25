@@ -7,7 +7,8 @@ const users = require("../data/users");
 router
   .route("/")
   .get((req, res) => {
-    res.json(posts);
+    res.render("posts", { title: "posts", posts });
+    //res.json(posts);
   })
   .post((req, res, next) => {
     if (req.body.userId && req.body.title && req.body.content) {

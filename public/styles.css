@@ -109,22 +109,35 @@ button:hover {
 
 /*USERS POSTS*/
 
-.users-posts {
+.users-posts,
+.all-posts {
     padding-top: 40px;
     display: flex;
     margin: 0 auto;
     flex-wrap: wrap;
-    width: 90%;
+    justify-content: center;
+    width: 100%;
+    gap: 35px;
 }
 
 .users-posts h2 {
+    width: 90%;
     font-size: 1.6rem;
 }
 
-.users-posts p {
+.post p {
     margin: 0;
     padding: 2px 0;
     font-size: 1.1rem;
+}
+
+.post {
+    width: 85%;
+    border-bottom: 1px solid black;
+}
+
+.post>p {
+    width: 95%;
 }
 
 .post p:last-child {
@@ -135,9 +148,10 @@ button:hover {
     display: block;
 }
 
+
 .post h4 {
     margin: 0;
-    padding: 20px 0 5px 0;
+    padding: 0 0 5px 0;
     font-size: 1.4rem;
 }
 
