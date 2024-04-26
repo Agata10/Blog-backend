@@ -7,12 +7,8 @@
     <div class="users-content">
       <% if(users.length > 0) { %> <% users.forEach(user => { %>
       <div class="card" id="_<%=user.id%>">
-        <%if(user.name.toLowerCase() === 'harry') {%>
-        <img src="/images/harry.webp" alt="harry" />
-        <%} else if(user.name.toLowerCase() === 'hermione') {%>
-        <img src="/images/hermione.jpeg" alt="hermione" />
-        <%} else if(user.name.toLowerCase() === 'ronald') {%>
-        <img src="/images/ron.jpeg" alt="ron" />
+        <%if(user.img) {%>
+        <img src="<%=user.img%>" alt="pic" />
         <%} else {%>
         <img src="/images/none-img.jpeg" alt="no-img" />
         <%}%>

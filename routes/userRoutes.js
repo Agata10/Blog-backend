@@ -22,6 +22,7 @@ router
         name: req.body.name,
         username: req.body.username,
         email: req.body.email,
+        img: "" || req.body.img,
       };
       users.push(user);
       res.json(users[users.length - 1]);
