@@ -48,4 +48,41 @@ router
     }
   });
 
+router
+  .route("/:id")
+  .get((req, res, next) => {
+    const comment = comments.find((c) => c.id == req.params.id);
+    if (comment) {
+      return res.json(comment);
+    } else {
+      next();
+      return;
+    }
+  })
+  .patch((req, res) => {
+    const comment = comments.find((c) => c.id == req.params.id);
+    if (comment) {
+      for (let key in req.body) {
+        console.log(key);
+        comment[key] = req.body[key];
+      }
+      return res.json(comment);
+    } else {
+      return res.json("Comment not found");
+    }
+  })
+  .delete((req, res) => {
+    const comment = comments.find((c, i) => {
+      if (c.id == req.params.id) {
+        comments.splice(i, 1);
+        return true;
+      }
+    });
+    if (comment) {
+      return res.json(comment);
+    } else {
+      return res.json("Comment not found");
+    }
+  });
+
 module.exports = router;

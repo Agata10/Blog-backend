@@ -56,7 +56,7 @@ router
       next();
     }
   })
-  .put((req, res, next) => {
+  .put((req, res) => {
     const post = posts.find((p) => p.id == req.params.id);
     if (post) {
       if (req.body.userId && req.body.title && req.body.content) {
@@ -70,10 +70,10 @@ router
         });
       }
     } else {
-      next();
+      res.json({ error: "Post not found" });
     }
   })
-  .delete((req, res, next) => {
+  .delete((req, res) => {
     const post = posts.find((p, i) => {
       if (p.id == req.params.id) {
         posts.splice(i, 1);
