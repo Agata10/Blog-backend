@@ -254,6 +254,6 @@ GET  /api/posts/
 
 1. Home page:
    <br>
-   <img src="/public/images/users.png" width="900" height="900">
+   <img src="/public/images/users.png" width="700" height="500">
    <br>
-      <img src="/public/images/posts.png" width="900" height="900">
+      <img src="/public/images/posts.png" width="700" height="500">
