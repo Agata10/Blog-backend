@@ -15,7 +15,7 @@ app.use(express.json());
 //encoding for data in the form!
 app.use(express.urlencoded({ extended: true }));
 
-//Logging requests middleware
+//Logging requests, custom middleware
 app.use((req, res, next) => {
   const time = new Date();
 
@@ -28,6 +28,12 @@ app.use((req, res, next) => {
     console.log(`Containg the data: `);
     console.log(`${JSON.stringify(req.body)}`);
   }
+  next();
+});
+
+//custom middleware for all users routes
+app.use("/api/users", (req, res, next) => {
+  console.log("---------Users route---------");
   next();
 });
 
