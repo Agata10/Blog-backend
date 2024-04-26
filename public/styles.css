@@ -211,6 +211,17 @@ form input::placeholder {
     font-size: 1.1rem;
 }
 
+/*COMMENTS*/
+.post>div div p {
+    font-size: 0.8rem;
+    width: 85%;
+}
+
+.post>div div p span {
+    font-weight: 800;
+    font-size: 0.9rem;
+}
+
 @media screen and (max-width: 900px) {
     header {
         justify-content: center;
