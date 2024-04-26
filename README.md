@@ -96,7 +96,7 @@ Note: Above route will show hypermedia - links to use API
     - **PATCH** /api/users/:id
     - **DELETE** /api/users/:id
     - **GET** /api/users/:id/posts || **GET** /api/users/:id/posts?sortBy=<value>
-    - **GET** /api/users/:id/posts/create - WARNING : this route will render a view to creating a post
+    - **GET** /api/users/:id/posts/create - `WARNING` : this route will render a view to creating a post
   - **GET** /api/posts
   - **POST** /api/posts
     - **GET** /api/posts/:id || **GET** /api/posts?userId=<value>
@@ -110,18 +110,18 @@ Note: Above route will show hypermedia - links to use API
 
 ## API examples
 
-**USERS**
+`**USERS**`
 
 1. Get all users
 
 ```javascript
-GET  api/users;
+GET  api/users
 ```
 
 2. Create user
 
 ```javascript
-POST  api/users;
+POST  api/users
 ```
 
 Request body example(note: there is optional img property):
@@ -137,13 +137,13 @@ Request body example(note: there is optional img property):
 3. Get single user by id
 
 ```javascript
-GET  api/users/2;
+GET  api/users/2
 ```
 
 4.  Get posts created but specific user sorted by the oldest id(the oldest creation)
 
 ```javascript
-GET  api/users/2/posts?sortBy=id:desc;
+GET  api/users/2/posts?sortBy=id:desc
 ```
 
 or
@@ -152,7 +152,7 @@ or
 GET  api/posts?userId=2
 ```
 
-**POST**
+`**POSTS**`
 
 1. Create post
 
@@ -170,7 +170,7 @@ Request body example:
   }
 ```
 
-**COMMENTS**
+`**COMMENTS**`
 
 1. Get comments
 
@@ -205,3 +205,44 @@ Request body example:
     "body": "lorem ipsum lorem ipsum"
   }
 ```
+
+## Template views
+
+1. Home view, it has links to all posts,all users
+
+```javascript
+GET  /
+```
+
+2. All users view
+
+```javascript
+GET / api / users;
+```
+
+The page is user friendly. When clicked on user card it will render posts created by user:
+
+```javascript
+GET  /api/users/:id/posts
+```
+
+`NOTE:` if hovered over post it will show post id and userId
+
+3. Create post view
+   `NOTE:`
+   When user click the "create post" button on "All users view" it will render a view to create post:
+
+```javascript
+GET  /api/users/:id/posts/create
+```
+
+4. All posts view
+
+```javascript
+GET  /api/posts/
+```
+
+`NOTE:`
+
+1. When user click on the post it will show comments for this post
+2. When user hovers over the post it shows userId and post id.
