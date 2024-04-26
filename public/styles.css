@@ -140,18 +140,19 @@ img {
 
 .post {
     width: 85%;
-    border-bottom: 1px solid black;
+    /* border-bottom: 1px solid black; */
+    cursor: pointer;
 }
 
 .post>p {
     width: 95%;
 }
 
-.post p:last-child {
+.post p:last-of-type {
     display: none;
 }
 
-.post:hover p:last-child {
+.post:hover p:last-of-type {
     display: block;
 }
 
@@ -161,6 +162,8 @@ img {
     padding: 0 0 5px 0;
     font-size: 1.4rem;
 }
+
+/*COMMENTS*/
 
 /*FORM*/
 
