@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const Joi = require("joi");
 
 const users = require("../data/users");
 const posts = require("../data/posts");
@@ -11,11 +12,18 @@ router
     res.render("users", { title: "users", users });
   })
   .post((req, res) => {
-    if (req.body.name && req.body.username && req.body.email) {
+    const schema = Joi.object({
+      name: Joi.string().required(),
+      username: Joi.string().required(),
+      email: Joi.string().email().required(),
+    });
+    const { error } = schema.validate(req.body);
+    if (error) {
+      return res.json({ error: "Invalid Data, need: name, username, email" });
+    } else {
       const foundUser = users.find((u) => u.username == req.body.username);
       if (foundUser) {
-        res.json({ error: "Username Already Taken" });
-        return;
+        return res.json({ error: "Username Already Taken" });
       }
       const user = {
         id: users[users.length - 1].id + 1,
@@ -26,7 +34,7 @@ router
       };
       users.push(user);
       res.json(users[users.length - 1]);
-    } else res.json({ error: "Invalid Data, need: name, username, email" });
+    }
   });
 
 //Retrieves all posts by a user with the specified id
