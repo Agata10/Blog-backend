@@ -10,6 +10,7 @@ Skill based assigment creating a express server
 - [API routes](#API-routes)
 - [API examples](#API-examples)
 - [Template views](#template-views)
+- [Screenshots](#screenshots)
 
 ## About
 
@@ -247,3 +248,12 @@ GET  /api/posts/
 
 1. When user click on the post it will show comments for this post
 2. When user hovers over the post it shows userId and post id.
+
+
+## Screenshots
+
+1. Home page:
+   <br>
+   <img src="/public/images/users.png" width="900" height="900">
+   <br>
+      <img src="/public/images/posts.png" width="900" height="900">
