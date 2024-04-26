@@ -48,6 +48,44 @@ app.get("/", (req, res) => {
   res.render("home", { title: "Welcome to the world of magic", menuLinks });
 });
 
+//add hypermedia for /api route
+app.get("/api", (req, res) => {
+  res.json({
+    links: [
+      {
+        href: "api/users",
+        rel: "users",
+        type: "GET",
+      },
+      {
+        href: "api/users",
+        rel: "users",
+        type: "POST",
+      },
+      {
+        href: "api/posts",
+        rel: "posts",
+        type: "GET",
+      },
+      {
+        href: "api/posts",
+        rel: "posts",
+        type: "POST",
+      },
+      {
+        href: "api/comments",
+        rel: "comments",
+        type: "GET",
+      },
+      {
+        href: "api/comments",
+        rel: "comments",
+        type: "POST",
+      },
+    ],
+  });
+});
+
 //use the users router and posts router and comments router
 app.use("/api/posts", postRoutes);
 app.use("/api/users", userRoutes);
