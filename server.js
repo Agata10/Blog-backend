@@ -3,6 +3,7 @@ const app = express();
 const PORT = 3000;
 const userRoutes = require("./routes/userRoutes");
 const postRoutes = require("./routes/postsRoutes");
+const commentRoutes = require("./routes/commentRoutes");
 
 //set up template engine
 app.set("view engine", "ejs");
@@ -47,9 +48,10 @@ app.get("/", (req, res) => {
   res.render("home", { title: "Welcome to the world of magic", menuLinks });
 });
 
-//use the users router and posts router
+//use the users router and posts router and comments router
 app.use("/api/posts", postRoutes);
 app.use("/api/users", userRoutes);
+app.use("/api/comments", commentRoutes);
 
 //middleware to handling if route not found 404
 app.use((req, res, next) => {
