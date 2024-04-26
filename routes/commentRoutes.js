@@ -37,8 +37,8 @@ router
       if (!isPost) return res.json({ error: "No post with that id exists" });
       const comment = {
         id: comments[comments.length - 1].id + 1,
-        userId: req.body.userId,
-        postId: req.body.postId,
+        userId: Number(req.body.userId),
+        postId: Number(req.body.postId),
         body: req.body.body,
       };
       comments.push(comment);
@@ -63,8 +63,10 @@ router
     const comment = comments.find((c) => c.id == req.params.id);
     if (comment) {
       for (let key in req.body) {
-        console.log(key);
         comment[key] = req.body[key];
+        if(key == "userId" || key == "postId") {
+          comment[key] = Number(req.body[key])
+        }
       }
       return res.json(comment);
     } else {

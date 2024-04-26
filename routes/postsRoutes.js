@@ -62,6 +62,9 @@ router
       if (req.body.userId && req.body.title && req.body.content) {
         for (let key in req.body) {
           post[key] = req.body[key];
+          if(key == "userId") {
+            post[key] = Number(req.body[key])
+          }
         }
         res.json(post);
       } else {
