@@ -110,7 +110,7 @@ Note: Above route will show hypermedia - links to use API
 
 ## API examples
 
-`**USERS**`
+`USERS`
 
 1. Get all users
 
@@ -152,7 +152,7 @@ or
 GET  api/posts?userId=2
 ```
 
-`**POSTS**`
+`POSTS`
 
 1. Create post
 
@@ -170,7 +170,7 @@ Request body example:
   }
 ```
 
-`**COMMENTS**`
+`COMMENTS`
 
 1. Get comments
 
@@ -217,7 +217,7 @@ GET  /
 2. All users view
 
 ```javascript
-GET / api / users;
+GET /api/users
 ```
 
 The page is user friendly. When clicked on user card it will render posts created by user:
