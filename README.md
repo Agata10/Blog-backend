@@ -227,10 +227,11 @@ GET  /api/users/:id/posts
 ```
 
 `NOTE:` if hovered over post it will show post id and userId
+<br>
+`NOTE:`
+When user click the "create post" button on "All users view" it will render a view to create post:
 
 3. Create post view
-   `NOTE:`
-   When user click the "create post" button on "All users view" it will render a view to create post:
 
 ```javascript
 GET  /api/users/:id/posts/create
