@@ -251,9 +251,9 @@ GET  /api/posts/
 
 
 ## Screenshots
-
-1. Home page:
+1. All users view
    <br>
    <img src="/public/images/users.png" width="700" height="500">
+1. All posts view
    <br>
       <img src="/public/images/posts.png" width="700" height="500">
