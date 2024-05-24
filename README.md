@@ -11,6 +11,7 @@ Skill based assigment creating a express server
 - [API examples](#API-examples)
 - [Template views](#template-views)
 - [Screenshots](#screenshots)
+- [License](#license)
 
 ## About
 
@@ -257,3 +258,6 @@ GET  /api/posts/
 1. All posts view
    <br>
       <img src="/public/images/posts.png" width="700" height="500">
+## License
+
+[LICENSE](LICENSE)
